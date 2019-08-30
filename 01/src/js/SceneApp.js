@@ -7,7 +7,7 @@ import ViewSim from './views/ViewSim';
 import ViewRender from './views/ViewRender';
 import Assets from './Assets';
 
-const params = { numParticles: 8, skipCount: 2 };
+const params = { numParticles: 16, skipCount: 2 };
 
 class SceneApp extends Scene {
 	constructor() {
@@ -33,8 +33,8 @@ class SceneApp extends Scene {
 		this._vInit = new ViewInit(params);
 		this._vSim = new ViewSim(params);		
 		this._vRender = new ViewRender(params);		
-		
-		const o = { minFilter:GL.NEAREST, magFilter:GL.NEAREST, type:GL.FLOAT };
+		console.log(GL)
+		const o = { minFilter:GL.NEAREST, magFilter:GL.NEAREST, type:GL.HALF_FLOAT };
 		const numParticles = params.numParticles;
 		this._fboRead  	= new alfrid.FrameBuffer(numParticles, numParticles, o, true);
 		this._fboDraw  	= new alfrid.FrameBuffer(numParticles, numParticles, o, true);

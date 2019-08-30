@@ -136,12 +136,12 @@ void main(void) {
 		float posOffset = (0.5 + extra.x * 0.2) * 0.25 * ra;
 		vec3 r = curlNoise(pos * posOffset + time * 034.3);
 
-    pos = vec3(0.);
-    vel	= vec3(r.x, r.y + 2.0,r.z) * 1.6;		
+    pos = vec3(0., -1., 0.);
+    vel	= vec3(r.x, r.y + 3.0,r.z) * 1.6;		
 		aAge = time;
   } else {
-    vel.x += 0.1;
-    vel.z += 0.1;
+    vel.x += 0.1 / 2.;
+    vel.z += 0.1 / 2.;
     vel.y -= 0.06;
     pos += .01 * vel;
   }
