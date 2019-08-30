@@ -1,79 +1,84 @@
-import '../scss/global.scss';
-import debugPolyfill from './debugPolyfill';
-import alfrid, { GL } from 'alfrid';
-import SceneApp from './SceneApp';
-import AssetsLoader from 'assets-loader';
+import '../scss/global.scss'
+import debugPolyfill from './debugPolyfill'
+import alfrid, { GL } from 'alfrid'
+import SceneApp from './SceneApp'
+import AssetsLoader from 'assets-loader'
 
-import assets from './asset-list';
-import Assets from './Assets';
+import assets from './asset-list'
+import Assets from './Assets'
 
-if(document.body) {
-	_init();
+if (document.body) {
+  _init()
 } else {
-	window.addEventListener('DOMContentLoaded', _init);
+  window.addEventListener('DOMContentLoaded', _init)
 }
-
 
 window.params = {
-	gamma:2.2,
-	exposure:5
-};
-
-function _init() {
-
-	//	LOADING ASSETS
-	if(assets.length > 0) {
-		document.body.classList.add('isLoading');
-
-		const loader = new AssetsLoader({
-			assets:assets
-		})
-		.on('error', (error)=>{
-			console.log('Error :', error);
-		})
-		.on('progress', (p) => {
-			// console.log('Progress : ', p);
-			const loader = document.body.querySelector('.Loading-Bar');
-			if(loader) loader.style.width = `${(p * 100)}%`;
-		})
-		.on('complete', _onImageLoaded)
-		.start();
-
-	} else {
-		_init3D();
-	}
+  gamma: 2.2,
+  exposure: 5
 }
 
+function _init () {
+  //	LOADING ASSETS
+  if (assets.length > 0) {
+    document.body.classList.add('isLoading')
 
-function _onImageLoaded(o) {
-	//	ASSETS
-	console.log('Image Loaded : ', o);
-	window.assets = o;
-	const loader = document.body.querySelector('.Loading-Bar');
-	loader.style.width = '100%';
-
-	_init3D();
-
-	setTimeout(()=> {
-		document.body.classList.remove('isLoading');
-	}, 250);
+    const loader = new AssetsLoader({
+      assets: assets
+    })
+      .on('error', (error) => {
+        console.log('Error :', error)
+      })
+      .on('progress', (p) => {
+        // console.log('Progress : ', p);
+        const loader = document.body.querySelector('.Loading-Bar')
+        if (loader) loader.style.width = `${(p * 100)}%`
+      })
+      .on('complete', _onImageLoaded)
+      .start()
+  } else {
+    _init3D()
+  }
 }
 
+function _onImageLoaded (o) {
+  //	ASSETS
+  console.log('Image Loaded : ', o)
+  window.assets = o
+  const loader = document.body.querySelector('.Loading-Bar')
+  loader.style.width = '100%'
 
-function _init3D() {
-	//	CREATE CANVAS
-	const canvas = document.createElement('canvas');
-	canvas.className = 'Main-Canvas';
-	document.body.appendChild(canvas);
+  _init3D()
 
-	//	INIT 3D TOOL
-	GL.init(canvas, {ignoreWebgl2:true});
+  setTimeout(() => {
+    document.body.classList.remove('isLoading')
+  }, 250)
+}
 
-	//	INIT ASSETS
-	Assets.init();
+function _init3D () {
+  //	CREATE CANVAS
+  const canvas = document.createElement('canvas')
+  canvas.className = 'Main-Canvas'
+  document.body.appendChild(canvas)
 
-	//	CREATE SCENE
-	const scene = new SceneApp();
+  //	INIT 3D TOOL
+	GL.init(canvas, { ignoreWebgl2: true })
+	window.GL = GL
 
+	const glFloat = GL.FLOAT
+	const glHalfFloat = GL.HALF_FLOAT
+	const unsignedByte = GL.gl.UNSIGNED_BYTE
+	const showError = !GL.getExtension('WEBGL_draw_buffers') || (glFloat === unsignedByte && glHalfFloat === unsignedByte)
+		
+  if (showError) {
+    const errorMobile = document.getElementById('mobileError')
+    errorMobile.style.display = 'flex'
+  } else {
+		//	INIT ASSETS
+		Assets.init()
 	
+		//	CREATE SCENE
+		const scene = new SceneApp()
+	}
+
 }

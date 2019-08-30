@@ -42,7 +42,6 @@ export default class ViewInit extends alfrid.View {
 		this.shader.uniform('spawnPos', 'vec3', spawn);
 		this.shader.uniform('speed', 'vec2', [speedX, speedY]);
 		this.shader.uniform('mainSpeed', 'float', mainSpeed);
-		console.log(Math.min(1, speed.x * speed.y));
 		
 
 		GL.draw(this.mesh);
