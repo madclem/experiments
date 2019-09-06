@@ -1,7 +1,6 @@
 // SceneApp.js
 
 import alfrid, { Scene, GL } from 'alfrid';
-import ViewObjModel from './ViewObjModel';
 import ViewInit from './views/ViewInit';
 import ViewSim from './views/ViewSim';
 import ViewRender from './views/ViewRender';
