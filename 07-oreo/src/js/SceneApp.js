@@ -32,7 +32,7 @@ class SceneApp extends Scene {
 		this.first = true;
 		console.log('init views');
 
-		// this.orbitalControl.lock();
+		this.orbitalControl.lock();
 		this.orbitalControl.rx.setTo(0.3);
 		this.orbitalControl.ry.setTo(0.3);
 		this.orbitalControl.radius.setTo(20);
@@ -163,7 +163,7 @@ class SceneApp extends Scene {
 
 		GL.enable(GL.CULL_FACE);
 
-		// this._vTooth.render(this.lightPos, this.mouse);
+		this._vTooth.render(this.lightPos, this.mouse, this.transition);
 	
 		this.fboNoise.unbind();
     

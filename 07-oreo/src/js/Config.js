@@ -14,19 +14,19 @@ export default {
 					"z": 0
 			},
 			"scale": {
-					"x": 2.37,
-					"y": 2.37,
-					"z": 2.37
+					"x": 3.71,
+					"y": 3.71,
+					"z": 3.71,
 			},
 			"position": {
-					"x": 0,
-					"y": 1.1300000000000001,
-					"z": 0
+					"x": -0.4,
+					"y": 0,
+					"z": -1.93
 			},
 			"rotation": {
-					"x": -0.04,
-					"y": 0.5,
-					"z": -0.04
+				"x": -2.66,
+				"y": 2.4,
+				"z": 0.31
 			}
 	},
 	"interaction": {
@@ -162,8 +162,8 @@ export default {
 											0
 									],
 									"speed": -0.11,
-									"waveLength": 2.25,
-									"steepness": 0.37,
+									"waveLength": 1.38,
+									"steepness": 0.28,
 									"offset": -1.5,
 									"directionX": 0.33,
 									"directionY": 0.01
@@ -226,7 +226,7 @@ export default {
 									],
 									"speed": -0.24,
 									"waveLength": 3.61,
-									"steepness": 0.54,
+									"steepness": 0.3,
 									"offset": -0.08,
 									"directionX": 0.22,
 									"directionY": 0.04
@@ -236,9 +236,9 @@ export default {
 											0,
 											0
 									],
-									"speed": -0.24,
-									"waveLength": 2.25,
-									"steepness": 0.54,
+									"speed": 0.33,
+									"waveLength": 1.8,
+									"steepness": 0.36,
 									"offset": 0,
 									"directionX": 0.23,
 									"directionY": 0.06
