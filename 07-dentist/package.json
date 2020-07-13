@@ -62,6 +62,7 @@
     "gl-matrix": "^3.0.0",
     "glsl-easings": "^1.0.0",
     "glsl-utils": "github:yiwenl/glsl-utils",
+    "gsap": "^3.4.0",
     "parse-dds": "^1.2.1",
     "querystringparser": "^0.1.1",
     "randomutils": "github:yiwenl/randomUtils",

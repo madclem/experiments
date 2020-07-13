@@ -2,6 +2,7 @@
 
 import alfrid, { GL, Scene } from 'alfrid';
 
+import gsap from 'gsap';
 import Assets from './Assets';
 import Config from './Config';
 import ViewPlane from './ViewPlane';
@@ -63,6 +64,13 @@ class SceneApp extends Scene {
 		this._vNoise = new ViewNoise();
 		this._vTooth = new ViewTooth();
 		this._vBackground = new ViewBackground(this);		
+
+		setTimeout(()=>{
+			gsap.to(this, 6, {
+				transition: 1,
+				ease: 'circ.out'
+			})
+		}, 1000);
 
 		// this._vModel = new ViewPlane();
 
@@ -139,7 +147,7 @@ class SceneApp extends Scene {
 			}
 		}
 
-		this.transition += (1 - this.transition) * 0.01;
+		// this.transition += (1 - this.transition) * 0.01;
 
 
 		this.tick++;
