@@ -21,15 +21,15 @@ class ViewPlane extends alfrid.View3D {
 
   _init() {}
 
-  render(planeData, lightPos = {}, displacementAmount, intersection = {}) {
+  render(planeData, lightPos = {}, displacementAmount, intersection = {}, transition) {
 
 		this.rotationX = planeData.rotation.x;
         this.rotationY = planeData.rotation.y;
         this.rotationZ = planeData.rotation.z;
 
-        this.x = planeData.position.x;
-        this.y = planeData.position.y;
-        this.z = planeData.position.z;
+        this.x = planeData.position.x * (1 + (1 - transition) * 3);
+        this.y = planeData.position.y * (1 + (1 - transition) * 3);
+        this.z = planeData.position.z * (1 + (1 - transition) * 3);
 
         // this.scale.x = planeData.scale.x;
         // this.scale.z = planeData.scale.z;
@@ -50,6 +50,7 @@ class ViewPlane extends alfrid.View3D {
 		
 		this.shader.uniform("uTime", "float", this.time);
 		
+		this.shader.uniform("uAlpha", 'float', transition);
 		this.shader.uniform("uSpread", 'float', Config.interaction.spread);
 		this.shader.uniform("uShowContact", 'float', Config.interaction.showContact ? 1 : 0);
 		this.shader.uniform("uShowLight", 'float', Config.interaction.showLight ? 1 : 0);

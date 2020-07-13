@@ -3,6 +3,7 @@ precision highp float;
 uniform sampler2D uTexture;
 uniform vec3 uCameraPos;
 uniform float uShowLight;
+uniform float uAlpha;
 uniform float uShowContact;
 
 varying vec3 pEye;
@@ -75,6 +76,7 @@ void main(void){
   color = blendAdd(color, vec3(min(1., 0.25 + min(0.6, light))));
   
   gl_FragColor=vec4(color,1.-vEdge);
+  gl_FragColor*=uAlpha;
   // gl_FragColor += d * 0.75;
   // gl_FragColor += light;
   // gl_FragColor=vec4(vec3(vEdge),1.);

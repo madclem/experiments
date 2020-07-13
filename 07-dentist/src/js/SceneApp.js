@@ -26,6 +26,8 @@ class SceneApp extends Scene {
 	}
 
 	_initViews() {
+
+		this.transition = 0;
 		this.first = true;
 		console.log('init views');
 
@@ -137,6 +139,8 @@ class SceneApp extends Scene {
 			}
 		}
 
+		this.transition += (1 - this.transition) * 0.01;
+
 
 		this.tick++;
 
@@ -146,12 +150,12 @@ class SceneApp extends Scene {
 			const plane = this.planes[i];
       
 			const planeData = Config.planes[i];
-			if (planeData.visible) plane.render(planeData, this.lightPos, this.displacementAmount, intersect);
+			if (planeData.visible) plane.render(planeData, this.lightPos, this.displacementAmount, intersect, this.transition);
 		}
 
 		GL.enable(GL.CULL_FACE);
 
-		this._vTooth.render(this.lightPos, this.mouse);
+		// this._vTooth.render(this.lightPos, this.mouse);
 	
 		this.fboNoise.unbind();
     

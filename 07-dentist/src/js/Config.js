@@ -123,6 +123,7 @@ export default {
 			{
 					"label": "Plane - Bottom left",
 					"visible": true,
+					"fadeZ": 1,
 					"camera": {
 							"x": -9.28,
 							"y": -6.57,
@@ -185,6 +186,7 @@ export default {
 					"label": "Plane - Top Right",
 					"visible": true,
 					"fadeZ": 1,
+					
 					"camera": {
 							"x": -6.140000000000001,
 							"y": 4.51,

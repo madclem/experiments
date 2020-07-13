@@ -23,12 +23,9 @@ class ViewBackground extends alfrid.View3D {
 
   render() {
     this.shader.bind();
-    this.shader.uniform("uScale", "vec2", [this.scaleX, this.scaleY]);
-    this.shader.uniform("uAspectRatio", "vec2", [
-      window.innerWidth,
-      window.innerHeight,
-    ]);
-    this.shader.uniform("uPosition", "vec3", [0, 0, this.z]);
+    this.shader.uniform('uScale', 'vec2', [this.scaleX, this.scaleY]);
+    this.shader.uniform('uAspectRatio', 'vec2', [window.innerWidth, window.innerHeight]);
+    this.shader.uniform('uPosition', 'vec3', [0, 0, this.z]);
 
     // GL.rotate(this._matrix);
     GL.draw(this.mesh);
@@ -36,16 +33,11 @@ class ViewBackground extends alfrid.View3D {
 
   resize() {
     const w = Math.max(window.innerWidth, window.innerHeight);
-    const { scaleX, scaleY } = fitXY(
-      window.innerWidth,
-      window.innerHeight,
-      this.z,
-      this.scene.camera,
-      this.scene.orbitalControl
-    );
+    const {scaleX, scaleY } = fitXY(window.innerWidth, window.innerHeight, this.z, this.scene.camera, this.scene.orbitalControl);
 
     this.scaleX = scaleX;
     this.scaleY = scaleY;
+
   }
 }
 
